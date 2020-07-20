@@ -1,0 +1,16 @@
+name: Build and Release
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    types: [opened, synchronize, reopened, labeled]
+
+jobs:
+  create_release:
+    name: Create Release
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master' && contains(github.event.pull_request.labels.*.name, 'skip create release')
+    steps:
+      - name: Print Some Words
+        run: echo "Release Creation Skipped"
