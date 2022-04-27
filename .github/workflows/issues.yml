@@ -1,0 +1,14 @@
+name: Say hello when issues are created
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  build:
+    name: Hello world action
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: ./action-a
+        with:
+          MY_NAME: "Octocat"
