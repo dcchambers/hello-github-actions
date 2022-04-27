@@ -4,7 +4,7 @@ on:
     types: [opened]
 
 jobs:
-  build:
+  say_hi:
     name: Hello world action
     runs-on: ubuntu-latest
     steps:
@@ -12,3 +12,12 @@ jobs:
       - uses: ./action-a
         with:
           MY_NAME: "Octocat"
+  fetch_issues:
+    name: Fetch GitHub Issues
+    runs-on: ubuntu-latest
+    steps:
+      - name: cURL GitHub Issues
+        run: |
+          curl \
+          -H "Accept: application/vnd.github.v3+json" \
+          https://api.github.com/repos/dcchambers/hello-github-actions/issues
